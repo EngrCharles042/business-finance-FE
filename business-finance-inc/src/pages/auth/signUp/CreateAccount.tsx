@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import InputField from "../../../components/elements/forms/InputField";
-import Button from "../../../components/elements/Button";
+// import Button from "../../../components/elements/button/Button";
 import PasswordField from "../../../components/elements/forms/PasswordField";
+import { MainButton } from "../../../components/elements/button/Index";
 
 interface AccountCreationProps {
   step: number;
@@ -19,6 +20,8 @@ const AccountCreation: React.FC<AccountCreationProps> = ({
     password: "",
   });
 
+  const [isLoading, setIsLoading] = useState(false); // State for loading
+
   // Handle input changes to update formData state
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -29,24 +32,20 @@ const AccountCreation: React.FC<AccountCreationProps> = ({
   };
 
   // Handle form submission to collect FormData
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    // Create a new FormData object
-    const data = new FormData();
-    data.append("fullName", formData.fullName);
-    data.append("phoneNumber", formData.phoneNumber);
-    data.append("email", formData.email);
-    data.append("password", formData.password);
+    // Start loading when form is submitted
+    setIsLoading(true);
 
-    // Here you can send `data` to your API or process it further
-    console.log(
-      "FormData:",
-      data.get("fullName"),
-      data.get("phoneNumber"),
-      data.get("email"),
-      data.get("password")
-    );
+    // Simulate API request or some async action
+    await new Promise((resolve) => setTimeout(resolve, 3000)); // Simulate a 3 second delay
+
+    // Stop loading after action is completed
+    setIsLoading(false);
+
+    // Here you can send the `formData` to your API
+    console.log("Form submitted:", formData);
   };
 
   return (
@@ -103,11 +102,12 @@ const AccountCreation: React.FC<AccountCreationProps> = ({
               label="Password"
               value={formData.password}
               placeholder="Enter your password"
-              type="password"
               name="password"
               onChange={handleInputChange}
             />
-            <Button text="Next" />
+            <MainButton isLoading={isLoading} type="submit">
+              Next
+            </MainButton>
           </form>
         </div>
       </section>

@@ -8,10 +8,10 @@ const AuthLayout = () => {
         className="relative hidden md:flex md:items-center md:justify-center"
         style={{
           backgroundImage: `url(${AuthBg})`,
-          backgroundPosition: "top left",
+          backgroundPosition: "top center",
           backgroundRepeat: "no-repeat",
           backgroundSize: "contain",
-          // backgroundColor: "#f0f0f0", // Add a background color as a fallback
+          backgroundColor: "#f0f0f0", // Add a background color as a fallback
           // height: "100%",
         }}
       ></div>
