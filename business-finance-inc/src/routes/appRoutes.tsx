@@ -1,4 +1,5 @@
 import AuthLayout from "../layouts/auth/Index";
+import AccountCreation from "../pages/auth/signUp/CreateAccount";
 
 export const AutheticationRoutes = {
     path: "/auth",
@@ -12,10 +13,10 @@ export const AutheticationRoutes = {
         //     path: "/auth/login",
         //     element: <Login />
         // },
-        // {
-        //     path: "/auth/signup",
-        //     element: <Signup />
-        // },
+        {
+            path: "/auth/signup",
+            element: <AccountCreation />
+        },
         // {
         //     path: "/auth/reset-password",
         //     element: <ResetPassword />
