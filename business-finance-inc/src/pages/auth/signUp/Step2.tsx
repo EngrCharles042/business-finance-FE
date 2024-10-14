@@ -1,26 +1,27 @@
 import React, { useState } from "react";
 import InputField from "../../../components/elements/forms/InputField";
-// import Button from "../../../components/elements/button/Button";
-import PasswordField from "../../../components/elements/forms/PasswordField";
 import { MainButton } from "../../../components/elements/button/Index";
 
-interface AccountCreationProps {
+interface BusinessInformationProps {
   step: number;
   totalSteps: number;
+  onNext: () => void;
+  onBack: () => void;
 }
 
-const AccountCreation: React.FC<AccountCreationProps> = ({
+const BusinessInformation: React.FC<BusinessInformationProps> = ({
   step,
   totalSteps,
+  onNext,
+  onBack,
 }) => {
   const [formData, setFormData] = useState({
-    fullName: "",
-    phoneNumber: "",
-    email: "",
-    password: "",
+    businessName: "",
+    cacNumber: "",
+    storeAddress: "",
   });
 
-  const [isLoading, setIsLoading] = useState(false); // State for loading
+  const [isLoading, setIsLoading] = useState(false); // Loading state
 
   // Handle input changes to update formData state
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -31,25 +32,28 @@ const AccountCreation: React.FC<AccountCreationProps> = ({
     }));
   };
 
-  // Handle form submission to collect FormData
+  // Handle form submission
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
     // Start loading when form is submitted
     setIsLoading(true);
 
-    // Simulate API request or some async action
-    await new Promise((resolve) => setTimeout(resolve, 3000)); // Simulate a 3 second delay
+    // Simulate API request or async action
+    await new Promise((resolve) => setTimeout(resolve, 1000)); // Simulate a 3-second delay
 
-    // Stop loading after action is completed
+    // Stop loading
     setIsLoading(false);
 
-    // Here you can send the `formData` to your API
+    // Handle form data submission (e.g., send to API)
     console.log("Form submitted:", formData);
+
+    // Proceed to the next step
+    onNext();
   };
 
   return (
-    <main className="flex flex-col max-w-[564px]">
+    <main className="flex flex-col">
       <header className="flex flex-col items-center w-full max-md:max-w-full">
         <h1 className="text-4xl font-extrabold leading-none text-center text-neutral-900">
           Create Account
@@ -63,9 +67,9 @@ const AccountCreation: React.FC<AccountCreationProps> = ({
           <div className="flex flex-col w-full font-semibold leading-none max-md:max-w-full">
             <div className="flex flex-wrap gap-10 items-center w-full max-md:max-w-full">
               <h2 className="flex-1 shrink self-stretch my-auto text-3xl basis-0">
-                Personal Information
+                Business Information
               </h2>
-              <p className="self-stretch my-auto text-xl w-[110px]">
+              <p className="self-stretch my-auto text-xl w-[110px] text-center">
                 Step {step} of {totalSteps}
               </p>
             </div>
@@ -75,39 +79,37 @@ const AccountCreation: React.FC<AccountCreationProps> = ({
             onSubmit={handleSubmit}
           >
             <InputField
-              label="Full Name"
-              value={formData.fullName}
-              placeholder="Enter your full name"
+              label="Registered Business Name"
+              value={formData.businessName}
+              placeholder="Solar Financing Inc"
+              name="businessName"
+              onChange={handleInputChange}
               type="text"
-              name="fullName"
-              onChange={handleInputChange}
             />
             <InputField
-              label="Phone Number"
-              value={formData.phoneNumber}
-              placeholder="Enter your phone number"
-              type="tel"
-              name="phoneNumber"
+              label="CAC Number"
+              value={formData.cacNumber}
+              placeholder="RC12345678"
+              name="cacNumber"
               onChange={handleInputChange}
+              type="text"
             />
             <InputField
-              label="Email"
-              value={formData.email}
-              placeholder="Enter your email address"
-              type="email"
-              name="email"
+              label="Physical Store Address"
+              value={formData.storeAddress}
+              placeholder="219, Herbert Macaulay Yaba"
+              name="storeAddress"
               onChange={handleInputChange}
+              type="text"
             />
-            <PasswordField
-              label="Password"
-              value={formData.password}
-              placeholder="Enter your password"
-              name="password"
-              onChange={handleInputChange}
-            />
-            <MainButton isLoading={isLoading} type="submit">
-              Next
-            </MainButton>
+            <div className="flex justify-between">
+              <MainButton className="mr-10" type="button" onClick={onBack}>
+                Back
+              </MainButton>
+              <MainButton isLoading={isLoading} type="submit" disabled>
+                Next
+              </MainButton>
+            </div>
           </form>
         </div>
       </section>
@@ -115,4 +117,4 @@ const AccountCreation: React.FC<AccountCreationProps> = ({
   );
 };
 
-export default AccountCreation;
+export default BusinessInformation;

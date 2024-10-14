@@ -1,5 +1,5 @@
 import { useRoutes } from "react-router-dom";
-import { AutheticationRoutes } from "./appRoutes";
+import { AutheticationRoutes } from "./AppRoutes";
 
 const Routes = () => useRoutes([AutheticationRoutes]);
 
