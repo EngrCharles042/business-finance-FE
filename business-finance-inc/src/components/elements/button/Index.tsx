@@ -21,7 +21,7 @@ export const MainButton = ({
 }: MainBttonProps) => (
   <button
     type={type}
-    className={`self-stretch px-3 py-4 my-20 w-full text-lg font-semibold leading-6 text-black hover:text-white whitespace-nowrap border-2 border-black rounded-xl hover:bg-zinc-800 max-md:mt-10 max-md:max-w-full ${className} `}
+    className={`self-stretch px-3 py-4 mt-20 w-full text-lg font-semibold leading-6 text-black hover:text-white whitespace-nowrap border-2 border-black rounded-xl hover:bg-zinc-800 max-md:mt-10 max-md:max-w-full ${className} `}
     {...props}
     onClick={onClick}
     disabled={disabled}

@@ -5,6 +5,7 @@ import { MainButton } from "../../../components/elements/button/Index";
 interface BusinessInformationProps {
   step: number;
   totalSteps: number;
+  setStage: (stage: string) => void; // Accept setStage as a prop
   onNext: () => void;
   onBack: () => void;
 }
@@ -12,7 +13,7 @@ interface BusinessInformationProps {
 const BusinessInformation: React.FC<BusinessInformationProps> = ({
   step,
   totalSteps,
-  onNext,
+  setStage,
   onBack,
 }) => {
   const [formData, setFormData] = useState({
@@ -49,11 +50,11 @@ const BusinessInformation: React.FC<BusinessInformationProps> = ({
     console.log("Form submitted:", formData);
 
     // Proceed to the next step
-    onNext();
+    setStage("3");
   };
 
   return (
-    <main className="flex flex-col">
+    <main className="flex flex-col my-20">
       <header className="flex flex-col items-center w-full max-md:max-w-full">
         <h1 className="text-4xl font-extrabold leading-none text-center text-neutral-900">
           Create Account
@@ -106,7 +107,7 @@ const BusinessInformation: React.FC<BusinessInformationProps> = ({
               <MainButton className="mr-10" type="button" onClick={onBack}>
                 Back
               </MainButton>
-              <MainButton isLoading={isLoading} type="submit" disabled>
+              <MainButton isLoading={isLoading} type="submit">
                 Next
               </MainButton>
             </div>

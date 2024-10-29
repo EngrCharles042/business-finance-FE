@@ -54,7 +54,7 @@ const PersonalInformation: React.FC<PersonalInformationProps> = ({
   };
 
   return (
-    <main className="flex flex-col">
+    <main className="flex flex-col my-20">
       <header className="flex flex-col items-center w-full max-md:max-w-full">
         <h1 className="text-4xl font-extrabold leading-none text-center text-neutral-900">
           Create Account

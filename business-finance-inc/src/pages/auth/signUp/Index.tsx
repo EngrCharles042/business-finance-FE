@@ -1,36 +1,49 @@
 import { useEffect, useState } from "react";
 import PersonalInformation from "./Step1";
 import BusinessInformation from "./Step2";
+import BankInformation from "./Step3";
 
 const Signup = () => {
     const [signupStage, setSignupStage] = useState("1");
-    // const [error, setError] = useState("");
 
     const setStage = (stage: string) => {
         setSignupStage(stage);
         localStorage.setItem("signupStage", stage);
-        return {};
     };
 
     useEffect(() => {
         const stage = localStorage.getItem("signupStage");
         console.log("Retrieved stage from local storage:", stage); // Log the retrieved stage
-        // if (!stage) {
-            if (!stage || (stage !== "1" && stage !== "2")) {
+        if (!stage) {
             setStage("1");
         } else {
             setStage(stage as string);
         }
     }, []);
-    
 
     // Helper function to render the correct component based on signupStage
     const renderComponent = () => {
         switch (signupStage) {
             case "1":
-                return <PersonalInformation step={1} totalSteps={2} setStage={setStage} />;
+                return <PersonalInformation step={1} totalSteps={3} setStage={setStage} />;
             case "2":
-                return <BusinessInformation step={2} totalSteps={2} onNext={() => setStage("3")} onBack={() => setStage("1")} />;
+                return (
+                    <BusinessInformation
+                        step={2}
+                        totalSteps={3}
+                        setStage={setStage}
+                        onNext={() => setStage("3")} // Navigate to stage 3
+                        onBack={() => setStage("1")}
+                    />
+                );
+            case "3":
+                return (
+                    <BankInformation
+                        step={3}
+                        totalSteps={3}
+                        onBack={() => setStage("2")}
+                    />
+                );
             default:
                 return null;
         }
