@@ -1,6 +1,6 @@
 import { useRoutes } from "react-router-dom";
-import { AutheticationRoutes } from "./AppRoutes";
+import { AutheticationRoutes, DashboardRoutes } from "./AppRoutes";
 
-const Routes = () => useRoutes([AutheticationRoutes]);
+const Routes = () => useRoutes([DashboardRoutes, AutheticationRoutes]);
 
 export default Routes;
