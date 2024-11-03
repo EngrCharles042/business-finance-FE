@@ -50,7 +50,7 @@ const PasswordField: React.FC<PasswordFieldProps> = ({ label, value, placeholder
       <label htmlFor={name} className="flex-1 shrink gap-4 w-full text-xl tracking-tight leading-none max-md:max-w-full">
         {label}
       </label>
-      <div className="flex flex-wrap gap-1.5 items-center px-5 py-4 mt-1.5 w-full text-2xl tracking-tight bg-white rounded-lg border-2 border-solid border-slate-300 min-h-[66px] max-md:max-w-full">
+      <div className="flex gap-1.5 items-center px-5 py-4 mt-1.5 w-full text-2xl tracking-tight bg-white rounded-lg border-2 border-solid border-slate-300 min-h-[66px] max-md:max-w-full">
         <input
           type={showPassword ? 'text' : 'password'}
           id={name}
@@ -65,7 +65,7 @@ const PasswordField: React.FC<PasswordFieldProps> = ({ label, value, placeholder
         <button
           type="button"
           onClick={handleTogglePasswordVisibility}
-          className="object-contain shrink-0 self-stretch my-auto aspect-square w-[30px]"
+          className="relative right-5 object-contain shrink-0 self-stretch my-auto aspect-square w-[30px]"
         >
           {showPassword ? (
             <FaEyeSlash className='text-black' size={24} /> // Eye-slash icon

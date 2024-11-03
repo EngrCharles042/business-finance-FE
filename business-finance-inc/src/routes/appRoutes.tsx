@@ -1,7 +1,11 @@
+import { Navigate } from "react-router-dom";
 import AuthHoc from "../components/AuthWrapper";
 import Dashboard from "../components/blocks/dashboard/Index";
 import AuthLayout from "../layouts/auth/Index";
 import DashboardLayout from "../layouts/dashboard/Index";
+import ForgotPassword from "../pages/auth/ForgotPassword";
+import Login from "../pages/auth/Login";
+import ResetPassword from "../pages/auth/ResetPassword";
 import Signup from "../pages/auth/signUp/Index";
 
 export const DashboardRoutes = {
@@ -146,29 +150,29 @@ export const AutheticationRoutes = {
         //     path: "/auth/welcome",
         //     element: <Welcome />
         // },
-        // {
-        //     path: "/auth/login",
-        //     element: <Login />
-        // },
+        {
+            path: "/auth/login",
+            element: <Login />
+        },
         {
             path: "/auth/signup",
             element: <Signup />
         },
-        // {
-        //     path: "/auth/reset-password",
-        //     element: <ResetPassword />
-        // },
-        // {
-        //     path: "/auth/forgot-password",
-        //     element: <ForgotPassword />
-        // },
+        {
+            path: "/auth/reset-password",
+            element: <ResetPassword />
+        },
+        {
+            path: "/auth/forgot-password",
+            element: <ForgotPassword />
+        },
         // {
         //     path: "/auth/verification",
         //     element: <Verification />
         // },
-        // {
-        //     path: "*",
-        //     element: <Navigate to="/auth/login" replace />
-        // }
+        {
+            path: "*",
+            element: <Navigate to="/auth/login" replace />
+        }
     ]
 };

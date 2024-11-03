@@ -2,12 +2,12 @@ import React, { useState } from "react";
 import InputField from "../../../components/elements/forms/InputField";
 import PasswordField from "../../../components/elements/forms/PasswordField";
 import { MainButton } from "../../../components/elements/button/Index";
+import { Link } from "react-router-dom";
 
 interface PersonalInformationProps {
   step: number;
   totalSteps: number;
   setStage: (stage: string) => void; // Accept setStage as a prop
-
 }
 
 const PersonalInformation: React.FC<PersonalInformationProps> = ({
@@ -114,6 +114,12 @@ const PersonalInformation: React.FC<PersonalInformationProps> = ({
               Next
             </MainButton>
           </form>
+          <div className="flex flex-wrap text-xl gap-2.5 items-center self-center mt-12 text-center max-md:mt-10">
+            <span className="text-zinc-800">Already have an account?</span>
+            <Link to="/auth/login" className="text-zinc-800 underline">
+              Login
+            </Link>
+          </div>
         </div>
       </section>
     </main>
